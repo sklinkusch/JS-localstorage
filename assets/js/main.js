@@ -13,11 +13,17 @@ function addEntry() {
   console.log(valueVal);
   if (keyVal && valueVal) {
     localStorage.setItem(keyVal, valueVal);
-    location.reload();
+    updateList();
   }
 }
-for (let i = 0; i < localStorage.length; i++) {
-  const myKey = localStorage.key(i);
-  const myVal = localStorage.getItem(myKey);
-  output.innerHTML += myKey + ":" + myVal + "<br/>";
+function updateList() {
+  let outputString = "";
+  for (let i = 0; i < localStorage.length; i++) {
+    const myKey = localStorage.key(i);
+    const myVal = localStorage.getItem(myKey);
+    outputString += myKey + ":" + myVal + "<br/>";
+  }
+  output.innerHTML = outputString;
 }
+
+updateList();
